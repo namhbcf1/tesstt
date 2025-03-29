@@ -844,7 +844,7 @@ footer p {
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     --transition: all 0.3s ease;
     --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    
+
     /* New Variables */
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--accent-color), #e74c3c);
@@ -948,7 +948,7 @@ header {
     display: flex;
     align-items: center;
     font-size: 1.8rem;
-    font-weight: 700;
+font-weight: 700;
     color: white;
 }
 
@@ -2059,22 +2059,22 @@ header {
     .installment-options {
         grid-template-columns: 1fr;
     }
-    
+
     .main-content-split {
         flex-direction: column;
     }
-    
+
     .main-content-primary,
     .main-content-sidebar {
         width: 100%;
     }
-    
+
     header .contact-buttons {
         flex-direction: column;
         gap: 10px;
         align-items: center;
     }
-    
+
     .selection-grid,
     .additional-components-grid,
     .comparison-grid,
@@ -3116,4 +3116,115 @@ header .phone-number i {
 #comparison-suggestions .section-header h2 {
     color: #333;
     font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .selection-grid,
+    .additional-components-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .component-card {
+        width: 100%;
+    }
+
+    /* Tăng kích thước các phần tử để dễ chạm vào trên mobile */
+    .dropdown, .action-button, .contact-button, .phone-number, .brand-option {
+        padding: 15px;
+        font-size: 16px; /* Đảm bảo text đủ lớn */
+    }
+
+    /* Đảm bảo có đủ khoảng cách cho các phần tử giao diện */
+    .section-header, .component-header {
+        margin-bottom: 15px;
+    }
+
+    /* Cải thiện hiển thị cho game card grid */
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    /* Đảm bảo các element nhỏ trong component card đủ lớn */
+    .component-card .component-info h3 {
+        font-size: 14px;
+    }
+
+    /* Tăng kích thước nút cho dễ chạm */
+    .action-button {
+        min-height: 50px;
+        margin-bottom: 15px;
+        width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+    }
+}
+
+/* Điều chỉnh cho màn hình siêu nhỏ (iPhone SE, etc) */
+@media (max-width: 375px) {
+    .game-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .header .contact-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-button {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile Touch Optimizations */
+@media (max-width: 768px) {
+    /* Tăng kích thước các target touch */
+    .dropdown, button, a, .contact-button, .brand-option, .game-card, input[type="range"] {
+        touch-action: manipulation; /* Cải thiện hiệu năng touch */
+    }
+
+    /* Tăng kích thước các phần tử dropdown và button */
+    .dropdown {
+        height: 50px;
+        font-size: 16px;
+    }
+
+    /* Thêm khoảng cách giữa các phần tử trong form */
+    .component {
+        margin-bottom: 20px;
+    }
+
+    /* Tối ưu cho iOS safari */
+    select, input, button, .action-button {
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 8px;
+    }
+
+    /* Tăng kích thước và khoảng cách các phần tử interactive */
+    .component-header, .section-header {
+        padding: 10px 0;
+    }
+
+    /* Cố định kích thước và tối ưu focus/active state cho các element có thể tương tác */
+    .action-button:active, .contact-button:active, .brand-option:active, .game-card:active {
+        transform: scale(0.97);
+        transition: transform 0.1s;
+    }
+
+    /* Ẩn tooltip trên mobile, thay vào đó sử dụng tap để hiển thị */
+    .smart-tooltip .tooltip-content {
+        display: none;
+    }
+
+    /* Chỉnh font size cho phần text trên nút */
+    .button-text {
+        font-size: 14px;
+    }
+
+    /* Tối ưu cho cả chế độ portrait và landscape */
+    @media (orientation: landscape) {
+        .game-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
 }
